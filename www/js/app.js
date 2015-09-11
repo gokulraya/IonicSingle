@@ -21,6 +21,7 @@ app.controller('RedditCtrl', function($http, $scope) {
   };
 
   $scope.doRefresh = function() {
+    $scope.stories = [];
     $http.get('https://www.reddit.com/r/funny/new/.json').success(function(response) {
       angular.forEach(response.data.children, function(child) {
         $scope.stories.push(child.data);
